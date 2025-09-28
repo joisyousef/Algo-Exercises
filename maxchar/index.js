@@ -5,8 +5,25 @@
 // maxChar("abcccccccd") === "c"
 // maxChar("apple 1231111") === "1"
 
-// 1) Create json object of the string and count every key with a value spcifies the number of chars that showed up
+function maxChar(str) {
+  const charMap = {};
+  let max = 0;
+  let maxChar = "";
 
-function maxChar(str) {}
+  for (let char of str) {
+    if (charMap[char]) {
+      charMap[char]++;
+    } else {
+      charMap[char] = 1;
+    }
+  }
+  for (let char in charMap) {
+    if (charMap[char] > max) {
+      max = charMap[char];
+      maxChar = char;
+    }
+  }
+  return maxChar;
+}
 
 module.exports = maxChar;
